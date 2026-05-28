@@ -1,0 +1,40 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: paramo_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 201210080Sln
+      MYSQL_DATABASE: paramo_libre
+    ports:
+      - "${MYSQL_PORT:-3308}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p\"$$MYSQL_ROOT_PASSWORD\" || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+      start_period: 25s
+
+  web:
+    build: .
+    container_name: paramo_web
+    restart: unless-stopped
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: paramo_libre
+      DB_USER: root
+      DB_PASS: 201210080Sln
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  mysql_data:

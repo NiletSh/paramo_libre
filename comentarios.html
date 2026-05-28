@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2d8659">
+  <meta name="description" content="Comentarios de la comunidad Páramo Libre">
+  <title>Páramo Libre - Comentarios</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+  <header class="main-header">
+    <div class="brand">
+      <div class="logo-badge small">
+        <img class="site-logo" src="img/logopl.png" alt="Páramo Libre">
+      </div>
+      <div>
+        <h1>PÁRAMO LIBRE</h1>
+        <p class="brand-subtitle">Comentarios de la comunidad</p>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <a href="publicar.php" class="nav-publish">+ Publicar</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="chats.html">Chats</a>
+      <a href="mis-libros.html">Mis libros</a>
+      <span class="nav-user" id="userDisplay"></span>
+      <a href="index.html" class="nav-logout">Cerrar sesión</a>
+    </nav>
+  </header>
+
+  <main class="page-container comments-page">
+    <section class="comments-list" id="commentsList">
+      <!-- Comentarios existentes -->
+    </section>
+
+    <section class="comments-form-section">
+      <h2>Publicar un comentario</h2>
+      <form id="commentForm" class="comment-form">
+        <label class="form-field">
+          <span>Nombre</span>
+          <input type="text" name="author" required placeholder="Tu nombre">
+        </label>
+
+        <label class="form-field">
+          <span>Comentario</span>
+          <textarea name="content" rows="3" required placeholder="Escribe tu opinión..."></textarea>
+        </label>
+
+        <button type="submit" class="btn primary-btn">Publicar comentario</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="sw-register.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
+

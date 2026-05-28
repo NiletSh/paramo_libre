@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2d8659">
+  <meta name="description" content="Mis libros - Tu biblioteca en Páramo Libre">
+  <title>Páramo Libre - Mis libros</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+  <header class="main-header">
+    <div class="brand">
+      <div class="logo-badge small">
+        <img class="site-logo" src="img/logopl.png" alt="Páramo Libre">
+      </div>
+      <div>
+        <h1>PÁRAMO LIBRE</h1>
+        <p class="brand-subtitle">Tu biblioteca personal</p>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <a href="publicar.php" class="nav-publish">+ Publicar</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="chats.html">Chats</a>
+      <a href="comentarios.html">Comentarios</a>
+      <span class="nav-user" id="userDisplay"></span>
+      <a href="index.html" class="nav-logout">Cerrar sesión</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <section class="search-section" style="text-align: center;">
+      <div class="search-header">
+        <h2 class="catalog-title">Mis libros</h2>
+        <p class="catalog-subtitle">Libros que has adquirido en Páramo Libre</p>
+      </div>
+    </section>
+
+    <section class="books-grid" id="myBooksGrid" role="main" aria-label="Lista de libros adquiridos">
+      <!-- Libros adquiridos generados dinámicamente -->
+    </section>
+
+    <div class="no-results" id="noBooks" style="display: none;" role="status">
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </svg>
+      <h3>No tienes libros adquiridos</h3>
+      <p>Comienza a explorar el catálogo y adquiere tus primeros libros</p>
+      <a href="catalogo.html" class="btn primary-btn" style="margin-top: 1rem; max-width: 200px;">Ir al catálogo</a>
+    </div>
+  </main>
+
+  <script src="sw-register.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
+

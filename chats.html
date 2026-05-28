@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2d8659">
+  <meta name="description" content="Chats de la comunidad Páramo Libre">
+  <title>Páramo Libre - Chats</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+  <header class="main-header">
+    <div class="brand">
+      <div class="logo-badge small">
+        <img class="site-logo" src="img/logopl.png" alt="Páramo Libre">
+      </div>
+      <div>
+        <h1>PÁRAMO LIBRE</h1>
+        <p class="brand-subtitle">Comunidad de lectores</p>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <a href="publicar.php" class="nav-publish">+ Publicar</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="mis-libros.html">Mis libros</a>
+      <a href="comentarios.html">Comentarios</a>
+      <span class="nav-user" id="userDisplay"></span>
+      <a href="index.html" class="nav-logout">Cerrar sesión</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <section class="chat-card">
+      <div class="chat-header">
+        <h2>Sala general</h2>
+        <p class="chat-subtitle">Conversación sobre lectura y sostenibilidad</p>
+      </div>
+
+      <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
+
+      <form class="chat-form" id="chatForm">
+        <input
+          class="chat-input"
+          type="text"
+          name="message"
+          maxlength="280"
+          placeholder="Escribe un mensaje..."
+          autocomplete="off"
+          required
+          aria-label="Campo de mensaje"
+        />
+        <button class="btn primary-btn" type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="sw-register.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2d8659">
+  <meta name="description" content="Catálogo de libros disponibles en Páramo Libre">
+  <title>Páramo Libre - Catálogo de Libros</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+  <header class="main-header">
+    <div class="brand">
+      <div class="logo-badge small">
+        <img class="site-logo" src="img/logopl.png" alt="Páramo Libre">
+      </div>
+      <div>
+        <h1>PÁRAMO LIBRE</h1>
+        <p class="brand-subtitle">Plataforma de trueque de libros</p>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <a href="publicar.php" class="nav-publish">+ Publicar</a>
+      <a href="chats.html">Chats</a>
+      <a href="mis-libros.html">Mis libros</a>
+      <a href="comentarios.html">Comentarios</a>
+      <span class="nav-user" id="userDisplay"></span>
+      <a href="index.html" class="nav-logout">Cerrar sesión</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <!-- Sección de búsqueda y filtros -->
+    <section class="search-section">
+      <div class="search-header">
+        <h2 class="catalog-title">Explora el Catálogo</h2>
+        <p class="catalog-subtitle">Descubre libros por género, título o autor</p>
+      </div>
+
+      <div class="search-controls">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <input
+            type="search"
+            id="searchInput"
+            class="search-input"
+            placeholder="Buscar por título, autor o palabra clave..."
+            aria-label="Buscar libros"
+          >
+        </div>
+        <div class="filter-select-wrapper">
+          <select id="genreFilter" class="filter-select" aria-label="Filtrar por género">
+            <option value="">Todos los géneros</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Chips de géneros rápidos -->
+      <div class="genre-chips" id="genreChips" role="group" aria-label="Géneros rápidos">
+        <!-- Se generan dinámicamente -->
+      </div>
+    </section>
+
+    <!-- Contador de resultados -->
+    <div class="results-info" id="resultsInfo" role="status" aria-live="polite" aria-atomic="true">
+      <span id="resultsCount">0</span> libros encontrados
+    </div>
+
+    <!-- Grid de libros -->
+    <section class="books-grid" id="booksGrid" role="main" aria-label="Lista de libros">
+      <!-- Tarjetas de libros generadas dinámicamente -->
+    </section>
+
+    <!-- Mensaje de no resultados -->
+    <div class="no-results" id="noResults" style="display: none;" role="status">
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+        <path d="M8 8l6 6"></path>
+        <path d="M14 8l-6 6"></path>
+      </svg>
+      <h3>No se encontraron libros</h3>
+      <p>Intenta con otros términos de búsqueda o explora otro género</p>
+    </div>
+  </main>
+
+  <script src="sw-register.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

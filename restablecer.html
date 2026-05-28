@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2d8659">
+  <meta name="description" content="Restablecer contraseña en Páramo Libre">
+  <title>Páramo Libre - Restablecer contraseña</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body class="auth-body">
+  <main class="auth-container">
+    <section class="auth-card">
+      <div class="auth-header">
+        <div class="logo-badge logo-badge--icon">
+          <img class="site-logo" src="img/logopl.png" alt="Páramo Libre">
+        </div>
+        <h1 class="auth-title">Restablecer contraseña</h1>
+        <p class="auth-subtitle">Crea una nueva contraseña para tu cuenta</p>
+      </div>
+
+      <form class="auth-form" id="resetForm">
+        <div class="input-group">
+          <label class="form-field">
+            <span>Nueva contraseña</span>
+            <input type="password" name="newPassword" required minlength="6" placeholder="Mínimo 6 caracteres" aria-label="Nueva contraseña">
+          </label>
+        </div>
+
+        <button type="submit" class="btn primary-btn">Guardar contraseña</button>
+      </form>
+
+      <div class="auth-links">
+        <a href="index.html" class="btn secondary-btn">← Volver a iniciar sesión</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="sw-register.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
+

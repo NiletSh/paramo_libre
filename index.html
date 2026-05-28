@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2d8659">
+  <meta name="description" content="Inicia sesión en Páramo Libre - Plataforma de trueque de libros">
+  <title>Páramo Libre - Iniciar sesión</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body class="auth-body">
+  <main class="auth-container">
+    <section class="auth-card">
+      <div class="auth-header auth-header--login">
+        <div class="logo-badge logo-badge--icon">
+          <img class="site-logo" src="img/logopl.png" alt="Páramo Libre - Plataforma de trueque de libros">
+        </div>
+        <h1 class="auth-title">Bienvenido a Páramo Libre</h1>
+        <p class="auth-tagline">Conecta, intercambia y descubre libros en tu comunidad.</p>
+      </div>
+
+      <form class="auth-form" id="loginForm">
+        <div class="input-group">
+          <label class="form-field">
+            <span>Correo o Usuario</span>
+            <input id="identifier" type="text" name="identifier" required placeholder="ejemplo@correo.com o usuario">
+          </label>
+        </div>
+
+        <div class="input-group">
+          <label class="form-field">
+            <span>Contraseña</span>
+            <input id="password" type="password" name="password" required placeholder="••••••••">
+          </label>
+        </div>
+
+        <button type="submit" class="btn primary-btn">Iniciar sesión</button>
+      </form>
+
+      <div class="divider">o</div>
+
+      <div class="auth-actions">
+        <a href="registro.html" class="btn secondary-btn">Crear nueva cuenta</a>
+        <a href="recuperar.html" class="btn secondary-btn">¿Olvidaste tu contraseña?</a>
+        <a href="qr.html" id="qrLink" class="btn qr-pill" aria-label="Ver código QR para acceso rápido">Acceder con QR</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Error handling if main.js doesn't load
+    window.__PARAMO_LIBRE_MAIN_LOADED__ = false;
+    window.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        if (window.__PARAMO_LIBRE_MAIN_LOADED__) return;
+        const form = document.getElementById("loginForm");
+        if (!form) return;
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          alert(
+            "No se cargó el módulo de la app (main.js/Firebase).\n\nAbre F12 → Console y copia el error que aparece."
+          );
+        });
+      }, 400);
+    });
+  </script>
+  
+  <script src="sw-register.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
+

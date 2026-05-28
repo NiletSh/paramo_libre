@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2d8659">
+  <meta name="description" content="Escanea el código QR para acceder a Páramo Libre">
+  <title>Páramo Libre - Código QR</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body class="auth-body">
+  <main class="qr-page">
+    <div class="qr-content">
+      <div class="qr-container">
+        <div>
+          <h1 class="qr-title">📱 Trueque de Libros</h1>
+          <p style="margin: 0 0 1rem 0; color: var(--text-secondary); font-size: 0.95rem;">
+            Escanea con tu dispositivo para acceder
+          </p>
+        </div>
+        
+        <div class="qr-box" id="qrContainer" aria-label="Contenedor del código QR">
+          <img id="qrImg" alt="Código QR de Páramo Libre - Trueque de Libros" loading="lazy">
+        </div>
+
+        <p class="qr-label">✨ Escanéame ✨</p>
+
+        <div id="qrFallback" style="display:none;">
+          No se pudo cargar el QR automáticamente. 
+          <a id="qrFallbackLink" href="index.php">Accede directamente aquí</a>
+        </div>
+
+        <div class="qr-actions">
+          <a href="index.html" class="qr-back-btn">← Regresar al Login</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <noscript style="display:block;text-align:center;padding:2rem 1rem;color:var(--primary-dark);background:rgba(45,134,89,0.08);border-radius:var(--radius-lg);margin:2rem;border:1px solid rgba(45,134,89,0.2);">
+    <strong>JavaScript deshabilitado</strong><br>
+    Por favor activa JavaScript en tu navegador para generar el código QR.
+  </noscript>
+
+  <script>
+    (function () {
+      // Configuration
+      const origin = location.origin;
+      const target = origin + "/index.php";
+      const size = 512;
+      
+      // QR API endpoints (in order of priority)
+      const qrApis = [
+        "https://api.qrserver.com/v1/create-qr-code/?size=" + size + "x" + size + "&data=" + encodeURIComponent(target),
+        "https://quickchart.io/qr?size=" + size + "&text=" + encodeURIComponent(target),
+        "https://chart.googleapis.com/chart?cht=qr&chs=" + size + "x" + size + "&chl=" + encodeURIComponent(target) + "&chld=L|1"
+      ];
+      
+      let currentApiIndex = 0;
+      const img = document.getElementById("qrImg");
+      const fallback = document.getElementById("qrFallback");
+      const fallbackLink = document.getElementById("qrFallbackLink");
+      
+      // Set fallback link
+      fallbackLink.href = target;
+      fallbackLink.textContent = target;
+      
+      // Handle image load error
+      img.onerror = function () {
+        currentApiIndex++;
+        if (currentApiIndex < qrApis.length) {
+          img.src = qrApis[currentApiIndex];
+        } else {
+          img.style.display = "none";
+          fallback.style.display = "block";
+          console.error("QR generation failed: all APIs unavailable");
+        }
+      };
+      
+      // Load QR image
+      img.src = qrApis[currentApiIndex];
+    })();
+  </script>
+</body>
+</html>
